@@ -1,0 +1,18 @@
+# Ignorování složek
+node_modules/
+build/
+dist/
+.next/
+coverage/
+public/
+
+# Ignorování specifických souborů
+package-lock.json
+yarn.lock
+
+# Ignorování generovaných souborů
+*.min.js
+*.map
+
+# Ignorování prostředí a konfigurací
+.env

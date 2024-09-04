@@ -26,6 +26,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env*.local
 
 # vercel
@@ -34,3 +35,20 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE specific files
+.vscode/
+
+# Logs and temporary files
+*.log
+.eslintcache
+.stylelintcache
+
+# Windows specific files
+Thumbs.db
+
+# Next.js cache
+.next/cache/
+
+# Prettier cache
+.prettiercache

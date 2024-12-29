@@ -6,7 +6,12 @@ module.exports = {
   endOfLine: 'lf',
   htmlWhitespaceSensitivity: 'css',
   jsxSingleQuote: true,
-  plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-prisma', 'prettier-plugin-packagejson'],
+  plugins: [
+    'prettier-plugin-tailwindcss',
+    'prettier-plugin-prisma',
+    'prettier-plugin-packagejson',
+    'prettier-plugin-sort-json',
+  ],
   printWidth: 100,
   proseWrap: 'preserve',
   quoteProps: 'as-needed',

@@ -30,6 +30,7 @@
     "lint-staged": "^15.3.0",
     "postcss": "^8",
     "prettier": "^3.4.2",
+    "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
@@ -38,7 +39,7 @@
     "*.{ts,tsx,js,jsx}": [
       "eslint --fix --max-warnings=0"
     ],
-    "*.{json,css,scss,md}": [
+    "*.{json,css,scss,md,prisma}": [
       "prettier --write"
     ]
   }

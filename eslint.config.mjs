@@ -3,6 +3,7 @@ import url from 'node:url';
 
 import { FlatCompat } from '@eslint/eslintrc';
 import promisePlugin from 'eslint-plugin-promise';
+import regexpPlugin from 'eslint-plugin-regexp';
 import securityPlugin from 'eslint-plugin-security';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sonarjs from 'eslint-plugin-sonarjs';
@@ -22,6 +23,7 @@ const eslintConfig = [
     'plugin:prettier/recommended',
     'plugin:promise/recommended',
     'plugin:unicorn/recommended',
+    'plugin:regexp/recommended',
   ),
   {
     plugins: {
@@ -30,6 +32,7 @@ const eslintConfig = [
       security: securityPlugin,
       sonarjs,
       unicorn,
+      regexp: regexpPlugin,
     },
     rules: {
       'prettier/prettier': 'error',

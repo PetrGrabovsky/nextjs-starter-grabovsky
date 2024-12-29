@@ -1,4 +1,5 @@
 import { FlatCompat } from '@eslint/eslintrc';
+import promisePlugin from 'eslint-plugin-promise';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -11,15 +12,22 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript', 'plugin:prettier/recommended'),
+  ...compat.extends(
+    'next/core-web-vitals',
+    'next/typescript',
+    'plugin:prettier/recommended',
+    'plugin:promise/recommended',
+  ),
   {
     plugins: {
       'simple-import-sort': simpleImportSort,
+      promise: promisePlugin,
     },
     rules: {
       'prettier/prettier': 'error',
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
+      'promise/always-return': 'off',
     },
   },
 ];

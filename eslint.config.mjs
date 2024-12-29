@@ -2,6 +2,7 @@ import { FlatCompat } from '@eslint/eslintrc';
 import promisePlugin from 'eslint-plugin-promise';
 import securityPlugin from 'eslint-plugin-security';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import sonarjs from 'eslint-plugin-sonarjs';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -24,6 +25,7 @@ const eslintConfig = [
       'simple-import-sort': simpleImportSort,
       promise: promisePlugin,
       security: securityPlugin,
+      sonarjs,
     },
     rules: {
       'prettier/prettier': 'error',
@@ -39,6 +41,14 @@ const eslintConfig = [
       'security/detect-buffer-noassert': 'error',
       'security/detect-disable-mustache-escape': 'error',
       'security/detect-possible-timing-attacks': 'error',
+      'sonarjs/cognitive-complexity': ['error', 15],
+      'sonarjs/no-duplicate-string': 'error',
+      'sonarjs/no-identical-functions': 'error',
+      'sonarjs/no-redundant-boolean': 'error',
+      'sonarjs/no-small-switch': 'error',
+      'sonarjs/no-unused-collection': 'error',
+      'sonarjs/prefer-immediate-return': 'error',
+      'sonarjs/no-nested-switch': 'error',
     },
   },
 ];

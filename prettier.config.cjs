@@ -11,6 +11,7 @@ module.exports = {
     'prettier-plugin-prisma',
     'prettier-plugin-packagejson',
     'prettier-plugin-sort-json',
+    '@prettier/plugin-xml',
   ],
   printWidth: 100,
   proseWrap: 'preserve',

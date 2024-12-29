@@ -1,13 +1,15 @@
+import path from 'node:path';
+import url from 'node:url';
+
 import { FlatCompat } from '@eslint/eslintrc';
 import promisePlugin from 'eslint-plugin-promise';
 import securityPlugin from 'eslint-plugin-security';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sonarjs from 'eslint-plugin-sonarjs';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import unicorn from 'eslint-plugin-unicorn';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
@@ -19,6 +21,7 @@ const eslintConfig = [
     'next/typescript',
     'plugin:prettier/recommended',
     'plugin:promise/recommended',
+    'plugin:unicorn/recommended',
   ),
   {
     plugins: {
@@ -26,6 +29,7 @@ const eslintConfig = [
       promise: promisePlugin,
       security: securityPlugin,
       sonarjs,
+      unicorn,
     },
     rules: {
       'prettier/prettier': 'error',
@@ -49,6 +53,17 @@ const eslintConfig = [
       'sonarjs/no-unused-collection': 'error',
       'sonarjs/prefer-immediate-return': 'error',
       'sonarjs/no-nested-switch': 'error',
+      'unicorn/filename-case': [
+        'error',
+        {
+          cases: {
+            camelCase: true,
+            pascalCase: true,
+            kebabCase: true,
+          },
+        },
+      ],
+      'unicorn/no-null': 'off',
     },
   },
 ];

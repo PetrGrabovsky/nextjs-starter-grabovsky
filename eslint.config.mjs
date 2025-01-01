@@ -9,6 +9,7 @@ import securityPlugin from 'eslint-plugin-security';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
+import testingLibrary from 'eslint-plugin-testing-library';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,7 +26,8 @@ const eslintConfig = [
     'plugin:promise/recommended',
     'plugin:unicorn/recommended',
     'plugin:regexp/recommended',
-    'plugin:eslint-comments/recommended'
+    'plugin:eslint-comments/recommended',
+    'plugin:testing-library/react',
   ),
   {
     plugins: {
@@ -36,6 +38,7 @@ const eslintConfig = [
       unicorn,
       regexp: regexpPlugin,
       'eslint-comments': eslintComments,
+      'testing-library': testingLibrary,
     },
     rules: {
       'prettier/prettier': 'error',
@@ -70,6 +73,10 @@ const eslintConfig = [
         },
       ],
       'unicorn/no-null': 'off',
+      'testing-library/no-debugging-utils': 'error',
+      'testing-library/prefer-screen-queries': 'error',
+      'testing-library/no-container': 'error',
+      'testing-library/prefer-explicit-assert': 'error',
     },
   },
 ];

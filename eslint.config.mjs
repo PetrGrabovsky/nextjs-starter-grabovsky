@@ -11,6 +11,7 @@ import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
 import testingLibrary from 'eslint-plugin-testing-library';
 import reactPlugin from 'eslint-plugin-react';
+import importPlugin from 'eslint-plugin-import';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,6 +31,8 @@ const eslintConfig = [
     'plugin:eslint-comments/recommended',
     'plugin:testing-library/react',
     'plugin:react/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
   ),
   {
     plugins: {
@@ -42,6 +45,7 @@ const eslintConfig = [
       'eslint-comments': eslintComments,
       'testing-library': testingLibrary,
       react: reactPlugin,
+      import: importPlugin,
     },
     rules: {
       'prettier/prettier': 'error',
@@ -83,6 +87,8 @@ const eslintConfig = [
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
       'react/prop-types': 'off',
+      'import/no-cycle': 'error',
+      'import/no-unused-modules': 'error',
     },
   },
 ];

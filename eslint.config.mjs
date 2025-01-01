@@ -10,6 +10,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
 import testingLibrary from 'eslint-plugin-testing-library';
+import reactPlugin from 'eslint-plugin-react';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,6 +29,7 @@ const eslintConfig = [
     'plugin:regexp/recommended',
     'plugin:eslint-comments/recommended',
     'plugin:testing-library/react',
+    'plugin:react/recommended',
   ),
   {
     plugins: {
@@ -39,6 +41,7 @@ const eslintConfig = [
       regexp: regexpPlugin,
       'eslint-comments': eslintComments,
       'testing-library': testingLibrary,
+      react: reactPlugin,
     },
     rules: {
       'prettier/prettier': 'error',
@@ -77,6 +80,9 @@ const eslintConfig = [
       'testing-library/prefer-screen-queries': 'error',
       'testing-library/no-container': 'error',
       'testing-library/prefer-explicit-assert': 'error',
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
+      'react/prop-types': 'off',
     },
   },
 ];

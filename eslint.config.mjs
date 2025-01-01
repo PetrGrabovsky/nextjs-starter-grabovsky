@@ -2,16 +2,17 @@ import path from 'node:path';
 import url from 'node:url';
 
 import { FlatCompat } from '@eslint/eslintrc';
-import promisePlugin from 'eslint-plugin-promise';
-import regexpPlugin from 'eslint-plugin-regexp';
 import eslintComments from 'eslint-plugin-eslint-comments';
+import importPlugin from 'eslint-plugin-import';
+import promisePlugin from 'eslint-plugin-promise';
+import reactPlugin from 'eslint-plugin-react';
+import regexpPlugin from 'eslint-plugin-regexp';
 import securityPlugin from 'eslint-plugin-security';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sonarjs from 'eslint-plugin-sonarjs';
-import unicorn from 'eslint-plugin-unicorn';
+import tailwindcss from 'eslint-plugin-tailwindcss';
 import testingLibrary from 'eslint-plugin-testing-library';
-import reactPlugin from 'eslint-plugin-react';
-import importPlugin from 'eslint-plugin-import';
+import unicorn from 'eslint-plugin-unicorn';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,6 +34,7 @@ const eslintConfig = [
     'plugin:react/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
+    'plugin:tailwindcss/recommended',
   ),
   {
     plugins: {
@@ -46,6 +48,7 @@ const eslintConfig = [
       'testing-library': testingLibrary,
       react: reactPlugin,
       import: importPlugin,
+      tailwindcss,
     },
     rules: {
       'prettier/prettier': 'error',
@@ -87,8 +90,21 @@ const eslintConfig = [
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
       'react/prop-types': 'off',
+      'react/jsx-sort-props': [
+        'error',
+        {
+          callbacksLast: true,
+          shorthandFirst: true,
+          noSortAlphabetically: false,
+          reservedFirst: true,
+        },
+      ],
       'import/no-cycle': 'error',
       'import/no-unused-modules': 'error',
+      'tailwindcss/classnames-order': 'off',
+      'no-async-promise-executor': 'error',
+      'no-await-in-loop': 'warn',
+      'require-await': 'error',
     },
   },
 ];

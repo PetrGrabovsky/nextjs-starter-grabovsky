@@ -38,23 +38,28 @@ const eslintConfig = [
   ),
   {
     plugins: {
-      'simple-import-sort': simpleImportSort,
-      promise: promisePlugin,
-      security: securityPlugin,
-      sonarjs,
-      unicorn,
-      regexp: regexpPlugin,
-      'eslint-comments': eslintComments,
-      'testing-library': testingLibrary,
-      react: reactPlugin,
-      import: importPlugin,
-      tailwindcss,
+      'simple-import-sort': simpleImportSort, // Řazení importů a exportů
+      promise: promisePlugin, // Pravidla pro práci s Promisy
+      security: securityPlugin, // Detekce bezpečnostních problémů
+      sonarjs, // Detekce bugů a code smells
+      unicorn, // Různá užitečná pravidla (např. filename-case, no-null)
+      regexp: regexpPlugin, // Pravidla pro práci s regulárními výrazy
+      'eslint-comments': eslintComments, // Pravidla pro ESLint direktivy v komentářích
+      'testing-library': testingLibrary, // Pravidla pro Testing Library
+      react: reactPlugin, // Pravidla pro React
+      import: importPlugin, // Pravidla pro importy (např. no-cycle, no-unused-modules)
+      tailwindcss, // Pravidla pro Tailwind CSS
     },
     rules: {
-      'prettier/prettier': 'error',
+      'prettier/prettier': 'error', // Integrace s Prettierem
+
+      // Importy
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
-      'promise/always-return': 'off',
+      'import/no-cycle': 'error',
+      'import/no-unused-modules': 'error',
+
+      // Bezpečnost
       'security/detect-unsafe-regex': 'error',
       'security/detect-non-literal-require': 'error',
       'security/detect-non-literal-fs-filename': 'error',
@@ -64,7 +69,9 @@ const eslintConfig = [
       'security/detect-buffer-noassert': 'error',
       'security/detect-disable-mustache-escape': 'error',
       'security/detect-possible-timing-attacks': 'error',
-      'sonarjs/cognitive-complexity': ['error', 15],
+
+      // SonarJS
+      'sonarjs/cognitive-complexity': ['error', 20],
       'sonarjs/no-duplicate-string': 'error',
       'sonarjs/no-identical-functions': 'error',
       'sonarjs/no-redundant-boolean': 'error',
@@ -72,6 +79,8 @@ const eslintConfig = [
       'sonarjs/no-unused-collection': 'error',
       'sonarjs/prefer-immediate-return': 'error',
       'sonarjs/no-nested-switch': 'error',
+
+      // Unicorn
       'unicorn/filename-case': [
         'error',
         {
@@ -83,13 +92,18 @@ const eslintConfig = [
         },
       ],
       'unicorn/no-null': 'off',
+
+      // Testing Library
       'testing-library/no-debugging-utils': 'error',
       'testing-library/prefer-screen-queries': 'error',
       'testing-library/no-container': 'error',
       'testing-library/prefer-explicit-assert': 'error',
+
+      // React
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
       'react/prop-types': 'off',
+      'react/no-unstable-nested-components': 'error',
       'react/jsx-sort-props': [
         'error',
         {
@@ -99,12 +113,36 @@ const eslintConfig = [
           reservedFirst: true,
         },
       ],
-      'import/no-cycle': 'error',
-      'import/no-unused-modules': 'error',
+
+      // Tailwind CSS
       'tailwindcss/classnames-order': 'off',
+      'tailwindcss/no-arbitrary-value': 'error',
+
+      // Promise
+      'promise/always-return': 'off',
       'no-async-promise-executor': 'error',
-      'no-await-in-loop': 'warn',
-      'require-await': 'error',
+
+      // Max Length
+      'max-len': [
+        'warn',
+        {
+          code: 100,
+          tabWidth: 2,
+          ignoreUrls: true, // URL adresy se ignorují
+          ignoreStrings: false,
+          ignoreTemplateLiterals: false,
+          ignoreRegExpLiterals: false,
+        },
+      ],
+
+      // Další pravidla
+      'no-await-in-loop': 'error',
+      'require-await': 'error', // Zakazuje await v cyklu
+      'no-console': ['warn', { allow: ['warn', 'error'] }], // Povoluje console.warn a console.error
+      'no-debugger': 'error',
+      'no-alert': 'error',
+      eqeqeq: ['error', 'always', { null: 'ignore' }], // Striktní porovnávání s výjimkou null
+      'no-var': 'error', // Nepoužívat var
     },
   },
 ];
